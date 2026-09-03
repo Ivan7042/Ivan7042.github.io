@@ -1,11 +1,173 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ivan's Webpage</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ivan Li &mdash; Resume</title>
+    <meta name="description" content="Personal resume website of Ivan Li." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:,">
   </head>
   <body>
-    <p>hello, my name is Ivan</p>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+      <span aria-hidden="true">🌙</span>
+    </button>
+
+    <header class="hero">
+      <div class="hero-inner">
+        <img class="avatar" src="https://via.placeholder.com/140" alt="Your headshot" />
+        <h1>Your Name</h1>
+        <p class="tagline">Job Title / What You Do &mdash; e.g. Software Engineer</p>
+        <p class="location">📍 City, Country</p>
+
+        <nav class="contact-links" aria-label="Contact links">
+          <a href="mailto:you@example.com">✉️ Email</a>
+          <a href="tel:+10000000000">📞 Phone</a>
+          <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="resume.pdf" target="_blank" rel="noopener">📄 Download Resume</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ABOUT / SUMMARY -->
+      <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>
+          A short professional summary goes here. Two to three sentences describing who you are,
+          your experience, and what you're looking for or passionate about. Keep it punchy &mdash;
+          this is your elevator pitch.
+        </p>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section id="experience" class="section">
+        <h2>Experience</h2>
+
+        <article class="entry">
+          <div class="entry-header">
+            <div>
+              <h3>Job Title</h3>
+              <p class="entry-subtitle">Company Name &middot; City, Country</p>
+            </div>
+            <p class="entry-date">Month Year &ndash; Present</p>
+          </div>
+          <ul>
+            <li>Accomplishment or responsibility, ideally with a measurable result.</li>
+            <li>Another accomplishment, using an action verb to start the line.</li>
+            <li>A third bullet highlighting a specific tool, technique, or impact.</li>
+          </ul>
+        </article>
+
+        <article class="entry">
+          <div class="entry-header">
+            <div>
+              <h3>Previous Job Title</h3>
+              <p class="entry-subtitle">Company Name &middot; City, Country</p>
+            </div>
+            <p class="entry-date">Month Year &ndash; Month Year</p>
+          </div>
+          <ul>
+            <li>Accomplishment or responsibility, ideally with a measurable result.</li>
+            <li>Another accomplishment relevant to the role you're targeting.</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- EDUCATION -->
+      <section id="education" class="section">
+        <h2>Education</h2>
+
+        <article class="entry">
+          <div class="entry-header">
+            <div>
+              <h3>Degree, Field of Study</h3>
+              <p class="entry-subtitle">University Name &middot; City, Country</p>
+            </div>
+            <p class="entry-date">Month Year &ndash; Month Year</p>
+          </div>
+          <ul>
+            <li>Relevant coursework, honors, GPA, or thesis (optional).</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- SKILLS -->
+      <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-group">
+            <h3>Languages</h3>
+            <ul class="tag-list">
+              <li>Python</li>
+              <li>JavaScript</li>
+              <li>Java</li>
+              <li>SQL</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Tools &amp; Frameworks</h3>
+            <ul class="tag-list">
+              <li>Git</li>
+              <li>React</li>
+              <li>Docker</li>
+              <li>Node.js</li>
+            </ul>
+          </div>
+          <div class="skill-group">
+            <h3>Other</h3>
+            <ul class="tag-list">
+              <li>Project Management</li>
+              <li>Public Speaking</li>
+              <li>Technical Writing</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section id="projects" class="section">
+        <h2>Projects</h2>
+        <div class="projects-grid">
+          <article class="card">
+            <h3>Project Name</h3>
+            <p>One or two sentences describing the project, the problem it solves, and your role.</p>
+            <p class="entry-subtitle">Tech: React, Node.js, PostgreSQL</p>
+            <a href="#" target="_blank" rel="noopener">View project &rarr;</a>
+          </article>
+          <article class="card">
+            <h3>Project Name</h3>
+            <p>One or two sentences describing the project, the problem it solves, and your role.</p>
+            <p class="entry-subtitle">Tech: Python, Flask</p>
+            <a href="#" target="_blank" rel="noopener">View project &rarr;</a>
+          </article>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS / AWARDS (optional) -->
+      <section id="certifications" class="section">
+        <h2>Certifications &amp; Awards</h2>
+        <ul class="simple-list">
+          <li><strong>Certification Name</strong> &mdash; Issuing Organization, Year</li>
+          <li><strong>Award Name</strong> &mdash; Issuing Organization, Year</li>
+        </ul>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>
+          Feel free to reach out at <a href="mailto:you@example.com">you@example.com</a> or connect
+          with me on <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; <span id="year"></span> Your Name. Built with HTML &amp; CSS.</p>
+    </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
