@@ -3,13 +3,20 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ivan Li &mdash; RFC 0001</title>
+    <title>Ivan Li - Curriculum Vitae and Resume</title>
     <meta name="description" content="Ivan Li — Software Engineer. Curriculum vitae, styled as a technical document." />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="data:,">
   </head>
   <body>
     <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">[dark]</button>
+
+    <div id="sticky-bar" class="sticky-bar" aria-hidden="true">
+      <span class="sticky-name">Ivan Li</span>
+      <span class="sticky-sep" aria-hidden="true">&middot;</span>
+      <span class="sticky-meta">Masters in Computer Science - Boston University</span>
+      <a class="sticky-contact" href="mailto:ivanli@bu.edu">ivanli@bu.edu</a>
+    </div>
 
     <div class="toc-rail" id="toc-rail">
       <button class="toc-tab" id="toc-tab" aria-expanded="false" aria-controls="toc-panel" aria-label="Open table of contents">&gt;</button>
@@ -40,34 +47,43 @@
     <main class="doc">
       <header class="doc-header">
         <div class="meta-block">
-          <p>Network Working Group: I. Li</p>
-          <p>Request for Comments: 0001&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;University of Michigan</p>
-          <p>Category: Informational&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;September 2026</p>
+          <p>Ivan Li</p>
+          <p>University of Michigan Alumni</p>
+          <p>Boston University Graduate School of Arts and Sciences</p>
+          <p>ivanli@bu.edu</p>
+          <p>Boston, MA</p>
+          <p>2026</p>
         </div>
 
-        <h1 class="doc-title">Ivan Li &mdash; Curriculum Vitae</h1>
-
-        <div class="status">
-          <h2>Status of This Memo</h2>
-          <p>
-            This document describes the professional experience, projects, and
-            qualifications of the author. It is provided for informational
-            purposes. Distribution of this memo is unlimited.
-          </p>
-        </div>
+        <h1 class="doc-title">Ivan Li - Curriculum Vitae</h1>
       </header>
 
       <section id="abstract" class="doc-section">
-        <h2>1.&nbsp; Abstract</h2>
-        <p>
-          I'm a Computer Science student at the University of Michigan, entering
-          a Master's in Cybersecurity at Boston University in 2026. My work
-          spans two registers: low-level systems &mdash; routers, transport
-          protocols, proxies &mdash; and fullstack product engineering, most
-          recently rebuilding a mobile app end-to-end on React Native and
-          Supabase. I like problems where correctness is checkable against a
-          spec, and I like building things people actually use.
-        </p>
+        <h2>1.&nbsp; Background</h2>
+        <div class="section-body">
+          <figure class="portrait">
+            <div class="portrait-frame">
+              <img
+                src="portrait.jpg"
+                alt="Portrait of Ivan Li"
+                width="160"
+                height="200"
+                onerror="this.style.display='none'"
+              />
+              <span class="portrait-label">[ portrait.jpg ]</span>
+            </div>
+            <figcaption>Fig.&nbsp;1.&nbsp; The author.</figcaption>
+          </figure>
+          <p>
+            I'm a Computer Science student at the University of Michigan, entering
+            a Master's in Cybersecurity at Boston University in 2026. My work
+            spans two registers: low-level systems &mdash; routers, transport
+            protocols, proxies &mdash; and fullstack product engineering, most
+            recently rebuilding a mobile app end-to-end on React Native and
+            Supabase. I like problems where correctness is checkable against a
+            spec, and I like building things people actually use.
+          </p>
+        </div>
       </section>
 
       <section id="education" class="doc-section">
@@ -101,7 +117,7 @@
           <h3>3.2&nbsp; University of Michigan ITS &mdash; Network Security Operations</h3>
           <p class="entry-date">May 2025 &ndash; August 2025</p>
           <ul>
-            <li>Automated detection of duplicate firewall objects, groups, and policy rules across Palo Alto, Cisco, and VMware vendor firewalls via Python API integrations, surfacing 6,088 duplicate network objects and 1,119 duplicate service objects.</li>
+            <li>Automated detection of duplicate firewall objects, groups, and policy rules across Palo Alto, Cisco, and VMware vendor firewalls via Python API integrations, surfacing <span class="count" data-target="6088">6,088</span> duplicate network objects and <span class="count" data-target="1119">1,119</span> duplicate service objects.</li>
             <li>Built a conversion engine to migrate Cisco Security Manager policies to Palo Alto, generating device-specific SET commands from a mapping scheme.</li>
             <li>Refactored and extended the team's Python API classes for long-term maintainability and use by future engineers.</li>
           </ul>
@@ -176,6 +192,8 @@
         <p>Li &mdash; Informational &mdash; Page 1</p>
       </footer>
     </main>
+
+    <button id="to-top" class="to-top" aria-label="Scroll to top" title="Scroll to top">&uarr;</button>
 
     <script src="script.js"></script>
   </body>
