@@ -1,35 +1,49 @@
-// Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+(function () {
+  var root = document.documentElement;
+  var toggle = document.getElementById("theme-toggle");
+  var stored = localStorage.getItem("theme");
+  var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  var theme = stored || (prefersDark ? "dark" : "light");
 
-// Dark mode toggle with localStorage persistence
-const root = document.documentElement;
-const toggleBtn = document.getElementById("theme-toggle");
+  applyTheme(theme);
 
-function applyTheme(theme) {
-  if (theme) {
-    root.setAttribute("data-theme", theme);
-  } else {
-    root.removeAttribute("data-theme");
+  toggle.addEventListener("click", function () {
+    theme = theme === "dark" ? "light" : "dark";
+    localStorage.setItem("theme", theme);
+    applyTheme(theme);
+  });
+
+  function applyTheme(t) {
+    if (t === "dark") {
+      root.setAttribute("data-theme", "dark");
+      toggle.textContent = "[light]";
+    } else {
+      root.removeAttribute("data-theme");
+      toggle.textContent = "[dark]";
+    }
   }
-  toggleBtn.querySelector("span").textContent = theme === "dark" ? "☀️" : "🌙";
-}
 
-try {
-  const saved = localStorage.getItem("theme");
-  if (saved) applyTheme(saved);
-} catch (e) {
-  // localStorage unavailable (e.g. privacy mode) — ignore, default theme applies
-}
+  // Table of contents: hover works on desktop; tap-to-toggle covers touch.
+  var tocRail = document.getElementById("toc-rail");
+  var tocTab = document.getElementById("toc-tab");
+  var tocPanel = document.getElementById("toc-panel");
 
-toggleBtn.addEventListener("click", () => {
-  const current = root.getAttribute("data-theme");
-  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const isDark = current === "dark" || (!current && prefersDark);
-  const next = isDark ? "light" : "dark";
-  applyTheme(next);
-  try {
-    localStorage.setItem("theme", next);
-  } catch (e) {
-    // ignore
-  }
-});
+  tocTab.addEventListener("click", function () {
+    var isOpen = tocRail.classList.toggle("open");
+    tocTab.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  tocPanel.addEventListener("click", function (e) {
+    if (e.target.tagName === "A") {
+      tocRail.classList.remove("open");
+      tocTab.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  document.addEventListener("click", function (e) {
+    if (!tocRail.contains(e.target)) {
+      tocRail.classList.remove("open");
+      tocTab.setAttribute("aria-expanded", "false");
+    }
+  });
+})();

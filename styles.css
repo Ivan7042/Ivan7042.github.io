@@ -1,213 +1,216 @@
-/* ---------- Theme tokens ---------- */
 :root {
-  --bg: #f9fafb;
-  --bg-alt: #ffffff;
-  --text: #1f2430;
-  --text-muted: #5a6272;
-  --accent: #2f6feb;
-  --accent-soft: #e8f0fe;
-  --border: #e3e6ec;
-  --shadow: 0 1px 3px rgba(20, 20, 30, 0.06), 0 1px 2px rgba(20, 20, 30, 0.04);
-  --radius: 10px;
-  --max-width: 780px;
+  --paper: #f6f4ee;
+  --ink: #1b1e1c;
+  --ink-soft: #4a4d47;
+  --rule: #c7c2b4;
+  --accent: #2e4c6d;
+  --accent-soft: #dfe6ec;
 }
 
 [data-theme="dark"] {
-  --bg: #14161c;
-  --bg-alt: #1b1e26;
-  --text: #e8eaf0;
-  --text-muted: #a0a6b4;
-  --accent: #6ea1ff;
-  --accent-soft: #22304d;
-  --border: #2a2e38;
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --paper: #16181a;
+  --ink: #e9e7de;
+  --ink-soft: #a6a99c;
+  --rule: #3a3d38;
+  --accent: #7fa8d1;
+  --accent-soft: #1f2c37;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #14161c;
-    --bg-alt: #1b1e26;
-    --text: #e8eaf0;
-    --text-muted: #a0a6b4;
-    --accent: #6ea1ff;
-    --accent-soft: #22304d;
-    --border: #2a2e38;
-    --shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
-  }
-}
-
-/* ---------- Reset & base ---------- */
 * {
   box-sizing: border-box;
 }
 
+html {
+  color-scheme: light;
+}
+
+[data-theme="dark"] html {
+  color-scheme: dark;
+}
+
 body {
   margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 15px;
+  line-height: 1.7;
   transition: background 0.2s ease, color 0.2s ease;
 }
 
-img {
-  max-width: 100%;
-}
-
-a {
-  color: var(--accent);
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-
-h1, h2, h3 {
-  line-height: 1.25;
-  font-weight: 700;
-}
-
-/* ---------- Theme toggle ---------- */
-.theme-toggle {
-  position: fixed;
-  top: 16px;
-  right: 16px;
-  z-index: 10;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 1px solid var(--border);
-  background: var(--bg-alt);
-  color: var(--text);
-  font-size: 1.1rem;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-}
-
-.theme-toggle:hover {
-  background: var(--accent-soft);
-}
-
-/* ---------- Hero ---------- */
-.hero {
-  background: var(--bg-alt);
-  border-bottom: 1px solid var(--border);
-  padding: 56px 24px 40px;
-  text-align: center;
-}
-
-.hero-inner {
-  max-width: var(--max-width);
+.doc {
+  max-width: 680px;
   margin: 0 auto;
+  padding: 64px 24px 96px;
 }
 
-.avatar {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--accent-soft);
-  margin-bottom: 16px;
+/* ---------- header ---------- */
+
+.doc-header {
+  margin-bottom: 48px;
 }
 
-.hero h1 {
-  font-size: 2rem;
-  margin: 0 0 4px;
+.meta-block p {
+  margin: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  white-space: pre;
+  overflow-x: auto;
 }
 
-.tagline {
-  font-size: 1.1rem;
-  color: var(--text-muted);
-  margin: 0 0 4px;
-}
-
-.location {
-  color: var(--text-muted);
-  margin: 0 0 20px;
-  font-size: 0.95rem;
-}
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 18px;
-}
-
-.contact-links a {
-  font-size: 0.95rem;
+.doc-title {
+  font-size: 20px;
   font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: center;
+  margin: 40px 0 32px;
 }
 
-/* ---------- Main sections ---------- */
-main {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 24px;
+.status h2 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: none;
+  margin: 32px 0 8px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 6px;
 }
 
-.section {
-  padding: 40px 0;
-  border-bottom: 1px solid var(--border);
+.status p {
+  margin: 0 0 8px;
+  color: var(--ink-soft);
 }
 
-.section:last-of-type {
-  border-bottom: none;
-}
+/* ---------- table of contents rail ---------- */
 
-.section h2 {
-  font-size: 1.4rem;
-  margin: 0 0 20px;
-  position: relative;
-  padding-bottom: 8px;
-}
-
-.section h2::after {
-  content: "";
-  position: absolute;
+.toc-rail {
+  position: fixed;
+  top: 0;
   left: 0;
-  bottom: 0;
-  width: 40px;
-  height: 3px;
-  background: var(--accent);
-  border-radius: 2px;
+  height: 100vh;
+  z-index: 20;
+  display: flex;
+  align-items: stretch;
 }
 
-/* ---------- Experience / Education entries ---------- */
+.toc-tab {
+  width: 28px;
+  align-self: center;
+  height: 64px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  font-family: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.toc-tab:hover,
+.toc-tab:focus-visible {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.toc-panel {
+  width: 260px;
+  height: 100%;
+  overflow-y: auto;
+  background: var(--paper);
+  border-right: 1px solid var(--rule);
+  padding: 32px 24px;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+}
+
+.toc-rail:hover .toc-panel,
+.toc-rail:focus-within .toc-panel,
+.toc-rail.open .toc-panel {
+  transform: translateX(0);
+}
+
+.toc-panel h2 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 14px;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 6px;
+}
+
+.toc-panel ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.toc-panel > ol > li {
+  margin-bottom: 10px;
+}
+
+.toc-panel ol ol {
+  padding-left: 16px;
+  margin-top: 6px;
+}
+
+.toc-panel ol ol li {
+  margin-bottom: 6px;
+}
+
+.toc-panel a {
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 13px;
+  border-bottom: 1px dotted transparent;
+}
+
+.toc-panel a:hover,
+.toc-panel a:focus-visible {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- sections ---------- */
+
+.doc-section {
+  border-top: 1px solid var(--rule);
+  padding-top: 28px;
+  margin-top: 28px;
+  scroll-margin-top: 24px;
+}
+
+.doc-section > h2 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
 .entry {
-  margin-bottom: 28px;
+  margin-bottom: 24px;
+  scroll-margin-top: 24px;
 }
 
 .entry:last-child {
   margin-bottom: 0;
 }
 
-.entry-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  flex-wrap: wrap;
-  gap: 4px 16px;
-  margin-bottom: 6px;
-}
-
-.entry-header h3 {
-  font-size: 1.05rem;
-  margin: 0;
-}
-
-.entry-subtitle {
-  color: var(--text-muted);
-  margin: 2px 0 0;
-  font-size: 0.92rem;
+.entry h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 2px;
 }
 
 .entry-date {
-  color: var(--text-muted);
-  font-size: 0.88rem;
-  white-space: nowrap;
-  margin: 0;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 10px;
+}
+
+.entry p {
+  margin: 0 0 8px;
 }
 
 .entry ul {
@@ -216,108 +219,106 @@ main {
 }
 
 .entry li {
-  margin-bottom: 4px;
-}
-
-/* ---------- Skills ---------- */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 24px;
-}
-
-.skill-group h3 {
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--text-muted);
-  margin: 0 0 10px;
-}
-
-.tag-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tag-list li {
-  background: var(--accent-soft);
-  color: var(--accent);
-  padding: 4px 12px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-/* ---------- Projects ---------- */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
-}
-
-.card {
-  background: var(--bg-alt);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px 20px;
-  box-shadow: var(--shadow);
-}
-
-.card h3 {
-  margin: 0 0 8px;
-  font-size: 1.05rem;
-}
-
-.card p {
-  margin: 0 0 8px;
-}
-
-/* ---------- Simple list (certifications) ---------- */
-.simple-list {
-  margin: 0;
-  padding-left: 20px;
-}
-
-.simple-list li {
   margin-bottom: 6px;
 }
 
-/* ---------- Footer ---------- */
-footer {
+/* ---------- skills ---------- */
+
+.skill-list {
+  margin: 0;
+}
+
+.skill-list dt {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 14px;
+}
+
+.skill-list dt:first-child {
+  margin-top: 0;
+}
+
+.skill-list dd {
+  margin: 4px 0 0;
+}
+
+/* ---------- awards / contact ---------- */
+
+#awards ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+#awards li {
+  margin-bottom: 10px;
+}
+
+address {
+  font-style: normal;
+}
+
+address p {
+  margin: 0 0 6px;
+}
+
+a {
+  color: var(--accent);
+}
+
+/* ---------- footer ---------- */
+
+.doc-footer {
+  margin-top: 56px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+  font-size: 12px;
+  color: var(--ink-soft);
   text-align: center;
-  padding: 28px 24px 48px;
-  color: var(--text-muted);
-  font-size: 0.85rem;
 }
 
-/* ---------- Print styles ---------- */
-@media print {
-  .theme-toggle {
-    display: none;
-  }
+/* ---------- theme toggle ---------- */
 
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: var(--accent-soft);
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  font-family: inherit;
+  font-size: 12px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--accent);
+}
+
+/* ---------- motion & accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
   body {
-    background: #fff;
-    color: #000;
-  }
-
-  .section {
-    border-bottom: none;
-    padding: 16px 0;
+    transition: none;
   }
 }
 
-/* ---------- Responsive ---------- */
-@media (max-width: 480px) {
-  .hero {
-    padding: 40px 16px 32px;
-  }
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
 
-  .entry-header {
-    flex-direction: column;
+@media (max-width: 480px) {
+  .doc {
+    padding: 48px 16px 72px 40px;
+  }
+  .meta-block p {
+    font-size: 11px;
+  }
+  .toc-panel {
+    width: 220px;
   }
 }

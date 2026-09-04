@@ -3,170 +3,179 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Ivan Li &mdash; Resume</title>
-    <meta name="description" content="Personal resume website of Ivan Li." />
+    <title>Ivan Li &mdash; RFC 0001</title>
+    <meta name="description" content="Ivan Li — Software Engineer. Curriculum vitae, styled as a technical document." />
     <link rel="stylesheet" href="styles.css" />
     <link rel="icon" href="data:,">
   </head>
   <body>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-      <span aria-hidden="true">🌙</span>
-    </button>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">[dark]</button>
 
-    <header class="hero">
-      <div class="hero-inner">
-        <img class="avatar" src="https://via.placeholder.com/140" alt="Your headshot" />
-        <h1>Your Name</h1>
-        <p class="tagline">Job Title / What You Do &mdash; e.g. Software Engineer</p>
-        <p class="location">📍 City, Country</p>
+    <div class="toc-rail" id="toc-rail">
+      <button class="toc-tab" id="toc-tab" aria-expanded="false" aria-controls="toc-panel" aria-label="Open table of contents">&gt;</button>
+      <nav class="toc-panel" id="toc-panel" aria-label="Table of contents">
+        <h2>Table of Contents</h2>
+        <ol>
+          <li><a href="#abstract">1.&nbsp; Abstract</a></li>
+          <li><a href="#education">2.&nbsp; Education</a>
+            <ol type="1">
+              <li><a href="#edu-bu">2.1&nbsp; Boston University</a></li>
+              <li><a href="#edu-umich">2.2&nbsp; Univ. of Michigan</a></li>
+            </ol>
+          </li>
+          <li><a href="#experience">3.&nbsp; Experience</a>
+            <ol type="1">
+              <li><a href="#exp-avenu">3.1&nbsp; Avenu (iOS)</a></li>
+              <li><a href="#exp-its">3.2&nbsp; UM ITS</a></li>
+            </ol>
+          </li>
+          <li><a href="#projects">4.&nbsp; Selected Projects</a></li>
+          <li><a href="#skills">5.&nbsp; Skills</a></li>
+          <li><a href="#awards">6.&nbsp; Awards</a></li>
+          <li><a href="#contact">7.&nbsp; Contact Information</a></li>
+        </ol>
+      </nav>
+    </div>
 
-        <nav class="contact-links" aria-label="Contact links">
-          <a href="mailto:you@example.com">✉️ Email</a>
-          <a href="tel:+10000000000">📞 Phone</a>
-          <a href="https://github.com/yourusername" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="resume.pdf" target="_blank" rel="noopener">📄 Download Resume</a>
-        </nav>
-      </div>
-    </header>
+    <main class="doc">
+      <header class="doc-header">
+        <div class="meta-block">
+          <p>Network Working Group: I. Li</p>
+          <p>Request for Comments: 0001&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;University of Michigan</p>
+          <p>Category: Informational&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;September 2026</p>
+        </div>
 
-    <main>
-      <!-- ABOUT / SUMMARY -->
-      <section id="about" class="section">
-        <h2>About Me</h2>
+        <h1 class="doc-title">Ivan Li &mdash; Curriculum Vitae</h1>
+
+        <div class="status">
+          <h2>Status of This Memo</h2>
+          <p>
+            This document describes the professional experience, projects, and
+            qualifications of the author. It is provided for informational
+            purposes. Distribution of this memo is unlimited.
+          </p>
+        </div>
+      </header>
+
+      <section id="abstract" class="doc-section">
+        <h2>1.&nbsp; Abstract</h2>
         <p>
-          A short professional summary goes here. Two to three sentences describing who you are,
-          your experience, and what you're looking for or passionate about. Keep it punchy &mdash;
-          this is your elevator pitch.
+          I'm a Computer Science student at the University of Michigan, entering
+          a Master's in Cybersecurity at Boston University in 2026. My work
+          spans two registers: low-level systems &mdash; routers, transport
+          protocols, proxies &mdash; and fullstack product engineering, most
+          recently rebuilding a mobile app end-to-end on React Native and
+          Supabase. I like problems where correctness is checkable against a
+          spec, and I like building things people actually use.
         </p>
       </section>
 
-      <!-- EXPERIENCE -->
-      <section id="experience" class="section">
-        <h2>Experience</h2>
-
-        <article class="entry">
-          <div class="entry-header">
-            <div>
-              <h3>Job Title</h3>
-              <p class="entry-subtitle">Company Name &middot; City, Country</p>
-            </div>
-            <p class="entry-date">Month Year &ndash; Present</p>
-          </div>
-          <ul>
-            <li>Accomplishment or responsibility, ideally with a measurable result.</li>
-            <li>Another accomplishment, using an action verb to start the line.</li>
-            <li>A third bullet highlighting a specific tool, technique, or impact.</li>
-          </ul>
+      <section id="education" class="doc-section">
+        <h2>2.&nbsp; Education</h2>
+        <article id="edu-bu" class="entry">
+          <h3>2.1&nbsp; Boston University</h3>
+          <p class="entry-date">Expected June 2028 &mdash; Boston, MA</p>
+          <p>MS in Computer Science, Specialization in Cybersecurity.</p>
         </article>
-
-        <article class="entry">
-          <div class="entry-header">
-            <div>
-              <h3>Previous Job Title</h3>
-              <p class="entry-subtitle">Company Name &middot; City, Country</p>
-            </div>
-            <p class="entry-date">Month Year &ndash; Month Year</p>
-          </div>
-          <ul>
-            <li>Accomplishment or responsibility, ideally with a measurable result.</li>
-            <li>Another accomplishment relevant to the role you're targeting.</li>
-          </ul>
+        <article id="edu-umich" class="entry">
+          <h3>2.2&nbsp; University of Michigan</h3>
+          <p class="entry-date">May 2026 &mdash; Ann Arbor, MI</p>
+          <p>BS in Computer Science.</p>
         </article>
       </section>
 
-      <!-- EDUCATION -->
-      <section id="education" class="section">
-        <h2>Education</h2>
+      <section id="experience" class="doc-section">
+        <h2>3.&nbsp; Experience</h2>
 
-        <article class="entry">
-          <div class="entry-header">
-            <div>
-              <h3>Degree, Field of Study</h3>
-              <p class="entry-subtitle">University Name &middot; City, Country</p>
-            </div>
-            <p class="entry-date">Month Year &ndash; Month Year</p>
-          </div>
+        <article id="exp-avenu" class="entry">
+          <h3>3.1&nbsp; Avenu (iOS) &mdash; Fullstack Engineer</h3>
+          <p class="entry-date">October 2024 &ndash; Present</p>
           <ul>
-            <li>Relevant coursework, honors, GPA, or thesis (optional).</li>
+            <li>Rebuilt the iOS app from the ground up: React Native / TypeScript / Tailwind CSS frontend on a Supabase (PostgreSQL) backend, authoring and deploying RPC and edge functions to power core app logic.</li>
+            <li>Engineered dynamic profile, social, and event systems &mdash; swipeable FlatLists, gesture-based interactions, custom bottom sheets &mdash; to drive engagement and retention.</li>
+            <li>Implemented navigation and meet pages from Figma mockups, including filtering logic and unique-identifier-based routing for accurate data retrieval.</li>
+          </ul>
+        </article>
+
+        <article id="exp-its" class="entry">
+          <h3>3.2&nbsp; University of Michigan ITS &mdash; Network Security Operations</h3>
+          <p class="entry-date">May 2025 &ndash; August 2025</p>
+          <ul>
+            <li>Automated detection of duplicate firewall objects, groups, and policy rules across Palo Alto, Cisco, and VMware vendor firewalls via Python API integrations, surfacing 6,088 duplicate network objects and 1,119 duplicate service objects.</li>
+            <li>Built a conversion engine to migrate Cisco Security Manager policies to Palo Alto, generating device-specific SET commands from a mapping scheme.</li>
+            <li>Refactored and extended the team's Python API classes for long-term maintainability and use by future engineers.</li>
           </ul>
         </article>
       </section>
 
-      <!-- SKILLS -->
-      <section id="skills" class="section">
-        <h2>Skills</h2>
-        <div class="skills-grid">
-          <div class="skill-group">
-            <h3>Languages</h3>
-            <ul class="tag-list">
-              <li>Python</li>
-              <li>JavaScript</li>
-              <li>Java</li>
-              <li>SQL</li>
-            </ul>
-          </div>
-          <div class="skill-group">
-            <h3>Tools &amp; Frameworks</h3>
-            <ul class="tag-list">
-              <li>Git</li>
-              <li>React</li>
-              <li>Docker</li>
-              <li>Node.js</li>
-            </ul>
-          </div>
-          <div class="skill-group">
-            <h3>Other</h3>
-            <ul class="tag-list">
-              <li>Project Management</li>
-              <li>Public Speaking</li>
-              <li>Technical Writing</li>
-            </ul>
-          </div>
-        </div>
+      <section id="projects" class="doc-section">
+        <h2>4.&nbsp; Selected Projects</h2>
+
+        <article class="entry">
+          <h3>4.1&nbsp; Static IPv4 Router</h3>
+          <p class="entry-date">C++ &middot; Ethernet, ARP, ICMP, Longest Prefix Match &middot; December 2025</p>
+          <p>A software router processing raw Ethernet frames &mdash; forwarding, TTL decrementing, checksum validation, and RFC-compliant ICMP error generation, with an ARP cache and request-queue for address resolution.</p>
+        </article>
+
+        <article class="entry">
+          <h3>4.2&nbsp; Custom UDP-Based Networking System</h3>
+          <p class="entry-date">C++, Sliding Window Protocol, CRC-32 &middot; November 2025</p>
+          <p>A reliable transport protocol built atop UDP: sliding-window flow control, retransmission timers, and cumulative ACKs, verified for full file integrity under simulated packet loss, delay, and reordering.</p>
+        </article>
+
+        <article class="entry">
+          <h3>4.3&nbsp; Adaptive HTTP Proxy for Bitrate Streaming</h3>
+          <p class="entry-date">C++, HTTP/1.1, Select I/O, EWMA &middot; October 2025</p>
+          <p>An HTTP proxy that rewrites video segment requests in real time based on EWMA throughput estimation, handling concurrent connections via non-blocking I/O.</p>
+        </article>
+
+        <article class="entry">
+          <h3>4.4&nbsp; Search Engine</h3>
+          <p class="entry-date">Python, Hadoop MapReduce, TF-IDF, PageRank &middot; April 2025</p>
+          <p>A distributed search engine over a crawled Wikipedia corpus: an inverted index with TF-IDF weighting and PageRank, served through RESTful index and query servers.</p>
+        </article>
+
+        <article class="entry">
+          <h3>4.5&nbsp; Easy ABLLS-R</h3>
+          <p class="entry-date">React, AWS Lambda, DynamoDB &middot; Fall 2024</p>
+          <p>A cloud-based data management tool for clinicians working with children with autism, parsing TSV assessment data into an editable, auto-saving table view. Winner, MHacks 2024 Best Cloud Implementation.</p>
+        </article>
       </section>
 
-      <!-- PROJECTS -->
-      <section id="projects" class="section">
-        <h2>Projects</h2>
-        <div class="projects-grid">
-          <article class="card">
-            <h3>Project Name</h3>
-            <p>One or two sentences describing the project, the problem it solves, and your role.</p>
-            <p class="entry-subtitle">Tech: React, Node.js, PostgreSQL</p>
-            <a href="#" target="_blank" rel="noopener">View project &rarr;</a>
-          </article>
-          <article class="card">
-            <h3>Project Name</h3>
-            <p>One or two sentences describing the project, the problem it solves, and your role.</p>
-            <p class="entry-subtitle">Tech: Python, Flask</p>
-            <a href="#" target="_blank" rel="noopener">View project &rarr;</a>
-          </article>
-        </div>
+      <section id="skills" class="doc-section">
+        <h2>5.&nbsp; Skills</h2>
+        <dl class="skill-list">
+          <dt>Languages</dt>
+          <dd>C++, C, Python, JavaScript, TypeScript, HTML, CSS</dd>
+          <dt>Technologies</dt>
+          <dd>React, React Native, Redux, Supabase, Firebase, Git, REST APIs, Socket Programming</dd>
+        </dl>
       </section>
 
-      <!-- CERTIFICATIONS / AWARDS (optional) -->
-      <section id="certifications" class="section">
-        <h2>Certifications &amp; Awards</h2>
-        <ul class="simple-list">
-          <li><strong>Certification Name</strong> &mdash; Issuing Organization, Year</li>
-          <li><strong>Award Name</strong> &mdash; Issuing Organization, Year</li>
+      <section id="awards" class="doc-section">
+        <h2>6.&nbsp; Awards</h2>
+        <ul>
+          <li><strong>MHacks 2024</strong> &mdash; Best Cloud Implementation (Caterpillar Award), for Easy ABLLS-R.</li>
+          <li><strong>Blue Ribbon Award</strong>, UROP Symposium &mdash; Exemplary Research Poster/Presentation, for work on LLM-based metadata enhancement for library databases.</li>
         </ul>
       </section>
 
-      <!-- CONTACT -->
-      <section id="contact" class="section">
-        <h2>Contact</h2>
-        <p>
-          Feel free to reach out at <a href="mailto:you@example.com">you@example.com</a> or connect
-          with me on <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener">LinkedIn</a>.
-        </p>
+      <section id="contact" class="doc-section">
+        <h2>7.&nbsp; Contact Information</h2>
+        <address>
+          <p>Ivan Li</p>
+          <p>Belmont, MA</p>
+          <p>Email: <a href="mailto:ivanli@umich.edu">ivanli@umich.edu</a></p>
+          <p>Phone: <a href="tel:+16179387042">617&ndash;938&ndash;7042</a></p>
+          <p>GitHub: <a href="https://github.com/Ivan7042" target="_blank" rel="noopener">github.com/Ivan7042</a></p>
+          <p>LinkedIn: <a href="https://linkedin.com/in/26ivanli" target="_blank" rel="noopener">linkedin.com/in/26ivanli</a></p>
+        </address>
       </section>
-    </main>
 
-    <footer>
-      <p>&copy; <span id="year"></span> Your Name. Built with HTML &amp; CSS.</p>
-    </footer>
+      <footer class="doc-footer">
+        <p>Li &mdash; Informational &mdash; Page 1</p>
+      </footer>
+    </main>
 
     <script src="script.js"></script>
   </body>
