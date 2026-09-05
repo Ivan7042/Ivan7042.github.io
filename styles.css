@@ -382,6 +382,133 @@ a {
   text-align: center;
 }
 
+.doc-footer-note {
+  margin: 6px 0 0;
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+/* ---------- appendix (unindexed) ---------- */
+
+.appendix-tag {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--ink-soft);
+  margin-left: 4px;
+}
+
+.ctf-entry p {
+  margin: 0 0 10px;
+}
+
+.ctf-widget {
+  border: 1px solid var(--rule);
+  background: var(--accent-soft);
+  padding: 14px;
+  border-radius: 2px;
+}
+
+.ctf-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.ctf-label {
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.ctf-input {
+  font-family: inherit;
+  font-size: 13px;
+  padding: 5px 8px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 2px;
+  width: 220px;
+  max-width: 100%;
+}
+
+.ctf-btn {
+  font-family: inherit;
+  font-size: 12px;
+  padding: 5px 10px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.ctf-btn:hover,
+.ctf-btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.ctf-hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+
+.ctf-hint code {
+  font-family: inherit;
+  color: var(--ink);
+}
+
+.ctf-status {
+  margin: 0 0 10px;
+  font-size: 13px;
+}
+
+.ctf-status code {
+  font-family: inherit;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.ctf-results {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.ctf-results li {
+  padding: 4px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ctf-results li:last-child {
+  border-bottom: none;
+}
+
+.ctf-board {
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.ctf-board-entry {
+  padding: 6px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.ctf-flag {
+  margin-top: 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 12px;
+  border-radius: 2px;
+  word-break: break-word;
+}
+
 /* ---------- theme toggle ---------- */
 
 .theme-toggle {

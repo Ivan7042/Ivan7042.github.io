@@ -249,4 +249,164 @@
   window.addEventListener("resize", onScroll, { passive: true });
 
   onScroll();
+
+  // ---------- appendix: gated behind the Konami code ----------
+  var konamiSequence = [
+    "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
+    "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight",
+  ];
+  var konamiProgress = 0;
+
+  document.addEventListener("keydown", function (e) {
+    var key = e.key.length === 1 ? e.key.toLowerCase() : e.key;
+    konamiProgress = key === konamiSequence[konamiProgress] ? konamiProgress + 1 : (key === konamiSequence[0] ? 1 : 0);
+    if (konamiProgress === konamiSequence.length) {
+      konamiProgress = 0;
+      unlockAppendix();
+    }
+  });
+
+  function unlockAppendix() {
+    var appendix = document.getElementById("appendix");
+    if (!appendix || !appendix.hidden) return;
+    appendix.hidden = false;
+    var entries = appendix.querySelectorAll(".entry");
+    var reveal = function () {
+      appendix.classList.add("in-view");
+      entries.forEach(function (entry) {
+        entry.classList.add("in-view");
+      });
+    };
+    if (reduceMotion) {
+      reveal();
+    } else {
+      // double rAF: force a layout flush in the hidden->visible state first,
+      // so the .in-view transition actually has a "from" frame to animate.
+      window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(reveal);
+      });
+    }
+    appendix.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
+  }
+
+  // ---------- appendix: A.1 project archive search (toy SQL injection) ----------
+  // Deliberately naive: builds a "query" the vulnerable way, then only checks
+  // for the classic tautology pattern before deciding whether to honor the
+  // WHERE clause at all. Everything here is a plain JS array, in this tab.
+  var projectsDB = [
+    { name: "Static IPv4 Router", tag: "C++", visible: true },
+    { name: "Custom UDP-Based Networking System", tag: "C++", visible: true },
+    { name: "Adaptive HTTP Proxy for Bitrate Streaming", tag: "C++", visible: true },
+    { name: "Search Engine", tag: "Python", visible: true },
+    { name: "Easy ABLLS-R", tag: "React", visible: true },
+    { name: "[restricted] Project Chimera", tag: "classified", visible: false, flag: "flag{sql1_qu073s_4r3_n0t_35c4p3d}" },
+  ];
+
+  var sqliInput = document.getElementById("sqli-input");
+  var sqliPreview = document.getElementById("sqli-query-preview");
+  var sqliResults = document.getElementById("sqli-results");
+  var sqliFlag = document.getElementById("sqli-flag");
+
+  function isSqlInjection(query) {
+    var stripped = query.replace(/['"]/g, "").toLowerCase();
+    return /\bor\b\s*(1\s*=\s*1|true)\b/.test(stripped); // classic tautology pattern
+  }
+
+  function runSqliQuery(raw) {
+    var q = raw || "";
+    var query = "SELECT * FROM projects WHERE name LIKE '%" + q + "%'";
+    if (sqliPreview) sqliPreview.textContent = query;
+
+    var rows;
+    if (isSqlInjection(query)) {
+      rows = projectsDB; // WHERE clause bypassed entirely
+    } else {
+      var needle = q.toLowerCase();
+      rows = projectsDB.filter(function (r) {
+        return r.visible && r.name.toLowerCase().indexOf(needle) !== -1;
+      });
+    }
+
+    if (sqliResults) {
+      sqliResults.innerHTML = "";
+      rows.forEach(function (r) {
+        var li = document.createElement("li");
+        li.textContent = r.name + " · " + r.tag;
+        sqliResults.appendChild(li);
+      });
+    }
+
+    var hit = rows.filter(function (r) { return r.flag; })[0];
+    if (hit && sqliFlag) {
+      sqliFlag.textContent = "unlocked: " + hit.flag;
+      sqliFlag.hidden = false;
+    }
+  }
+
+  if (sqliInput) {
+    sqliInput.addEventListener("input", function () {
+      runSqliQuery(sqliInput.value);
+    });
+    runSqliQuery("");
+  }
+
+  // ---------- appendix: A.2 guestbook (real, sandboxed DOM XSS) ----------
+  // This one is genuinely vulnerable: raw input goes straight into innerHTML.
+  // It's confined to this tab (nothing is sent or stored anywhere), so the
+  // only "victim" a payload here can reach is your own page.
+  var xssInput = document.getElementById("xss-input");
+  var xssPost = document.getElementById("xss-post");
+  var xssBoard = document.getElementById("xss-board");
+  var xssFlag = document.getElementById("xss-flag");
+
+  var nativeAlert = window.alert;
+  window.alert = function (msg) {
+    if (xssFlag) {
+      xssFlag.textContent = "unlocked: flag{d0m_xss_via_1nn3rHTML}";
+      xssFlag.hidden = false;
+    }
+    return nativeAlert.call(window, msg);
+  };
+
+  if (xssPost && xssInput && xssBoard) {
+    xssPost.addEventListener("click", function () {
+      if (!xssInput.value) return;
+      var entry = document.createElement("div");
+      entry.className = "ctf-board-entry";
+      entry.innerHTML = xssInput.value; // intentionally unsanitized
+      xssBoard.appendChild(entry);
+      xssInput.value = "";
+    });
+  }
+
+  // ---------- appendix: A.3 restricted files (broken access control) ----------
+  // The "access control" is a single variable living in this tab. There's no
+  // server to ask, so whatever decides your access here is exactly as
+  // trustworthy as the browser console — which is to say, not at all.
+  var bacStatus = document.getElementById("bac-status");
+  var bacList = document.getElementById("bac-list");
+  var bacFlag = document.getElementById("bac-flag");
+  var isAdminValue = false;
+
+  Object.defineProperty(window, "isAdmin", {
+    configurable: true,
+    get: function () {
+      return isAdminValue;
+    },
+    set: function (v) {
+      isAdminValue = !!v;
+      renderBac();
+    },
+  });
+
+  function renderBac() {
+    if (bacStatus) bacStatus.textContent = String(isAdminValue);
+    if (isAdminValue) {
+      if (bacList) bacList.innerHTML = "<li>[unlocked] internal-notes.txt</li>";
+      if (bacFlag) {
+        bacFlag.textContent = "unlocked: flag{cli3nt_s1d3_ch3cks_ar3_n0_ch3ck_4t_4ll}";
+        bacFlag.hidden = false;
+      }
+    }
+  }
 })();

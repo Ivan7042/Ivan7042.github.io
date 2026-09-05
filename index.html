@@ -188,7 +188,54 @@
 
       <footer class="doc-footer">
         <p>Reached End of Page</p>
+        <p class="doc-footer-note">or so it says &mdash; there's an appendix, but you'll have to earn it: &uarr; &uarr; &darr; &darr; &larr; &rarr; &larr; &rarr;</p>
       </footer>
+
+      <section id="appendix" class="doc-section appendix" aria-label="Unindexed appendix" hidden>
+        <h2>A.&nbsp; Appendix <span class="appendix-tag">[unindexed]</span></h2>
+
+        <article class="entry ctf-entry" id="ctf-sqli">
+          <h3>A.1&nbsp; Project Archive Search</h3>
+          <p class="entry-date">internal tool &middot; query interface, left in by mistake</p>
+          <p>A leftover search box into the project archive. Looks read-only.</p>
+          <div class="ctf-widget">
+            <div class="ctf-row">
+              <label class="ctf-label" for="sqli-input">query&gt;</label>
+              <input type="text" id="sqli-input" class="ctf-input" autocomplete="off" spellcheck="false" placeholder="project name" />
+            </div>
+            <p class="ctf-hint">live query: <code id="sqli-query-preview"></code></p>
+            <ul id="sqli-results" class="ctf-results"></ul>
+            <p id="sqli-flag" class="ctf-flag" hidden></p>
+          </div>
+        </article>
+
+        <article class="entry ctf-entry" id="ctf-xss">
+          <h3>A.2&nbsp; Guestbook</h3>
+          <p class="entry-date">local only &middot; nothing here leaves this tab</p>
+          <p>Sign the guestbook. Entries render exactly as typed &mdash; no script tags needed.</p>
+          <div class="ctf-widget">
+            <div class="ctf-row">
+              <input type="text" id="xss-input" class="ctf-input" autocomplete="off" spellcheck="false" placeholder="say something" />
+              <button type="button" id="xss-post" class="ctf-btn">post</button>
+            </div>
+            <div id="xss-board" class="ctf-board" aria-live="polite"></div>
+            <p id="xss-flag" class="ctf-flag" hidden></p>
+          </div>
+        </article>
+
+        <article class="entry ctf-entry" id="ctf-bac">
+          <h3>A.3&nbsp; Restricted Files</h3>
+          <p class="entry-date">access control &middot; enforced entirely in this tab</p>
+          <p>One more document in the archive. The lock on it never left the browser.</p>
+          <div class="ctf-widget">
+            <p class="ctf-status">isAdmin: <code id="bac-status">false</code></p>
+            <ul class="ctf-results" id="bac-list">
+              <li id="bac-locked">[restricted] internal-notes.txt &mdash; access denied</li>
+            </ul>
+            <p id="bac-flag" class="ctf-flag" hidden></p>
+          </div>
+        </article>
+      </section>
     </main>
 
     <button id="to-top" class="to-top" aria-label="Scroll to top" title="Scroll to top">&uarr;</button>
